@@ -10,12 +10,12 @@ const ProductCard = ({ product, addToCart }) => {
       <button
         data-testid={'product-' + product.id}
         onClick={() => addToCart(product)}
-        disabled={!product.inStock}
+        className={styles.addBtn}
       >
         Add to Cart
       </button>
     </div>
-  )
+  );
 }
 
 export default ProductCard

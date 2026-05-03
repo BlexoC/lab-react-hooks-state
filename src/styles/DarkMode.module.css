@@ -1,3 +1,33 @@
-/* TODO (optional): Define styles for dark mode */
+/* Light mode styles */
+.light {
+	background: #fff;
+	color: #222;
+	transition: background 0.3s, color 0.3s;
+}
 
-/* TODO (optional): Ensure text and background colors adjust for dark mode */
+/* Dark mode styles */
+.dark {
+	background: #181818;
+	color: #f5f5f5;
+	transition: background 0.3s, color 0.3s;
+}
+
+.toggleContainer {
+	margin-bottom: 1rem;
+}
+
+.toggleBtn {
+	border-radius: 8px;
+	border: 1px solid #888;
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-weight: 500;
+	background-color: #1a1a1a;
+	color: #fff;
+	cursor: pointer;
+	transition: border-color 0.25s, background 0.3s;
+}
+.toggleBtn:hover {
+	border-color: #646cff;
+	background: #333;
+}

@@ -9,36 +9,42 @@ export const sampleProducts = [
   { id: 4, name: 'Cheese', price: '$3.49', category: 'Dairy', inStock: true },
 ]
 
-const ProductList = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [cart, setCart] = useState([])
-
-  function addToCart(product) {
-    setCart([...cart, product])
-  }
+const ProductList = ({ addToCart, cart }) => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const filteredProducts =
     selectedCategory === 'all'
       ? sampleProducts
-      : sampleProducts.filter((p) => p.category === selectedCategory)
+      : sampleProducts.filter((p) => p.category === selectedCategory);
 
   return (
     <div>
-      <label>Filter by Category: </label>
-      <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+      <label htmlFor="category-select">Filter by Category: </label>
+      <select
+        id="category-select"
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+        style={{ marginBottom: '1rem' }}
+      >
         <option value="all">All</option>
         <option value="Fruits">Fruits</option>
         <option value="Dairy">Dairy</option>
       </select>
 
       <h2>Available Products</h2>
-      {filteredProducts.map((product) => (
-        <ProductCard key={product.id} product={product} addToCart={addToCart} />
-      ))}
-
-      <Cart cart={cart} />
+      {filteredProducts.length === 0 ? (
+        <p>No products available</p>
+      ) : (
+        filteredProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
+        ))
+      )}
     </div>
-  )
+  );
 }
 
 export default ProductList
